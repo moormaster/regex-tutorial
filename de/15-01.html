@@ -1,0 +1,39 @@
+---
+title: Refactoring - Vertausche den 1. und den 3. Argument
+---
+<p>
+  In der Methodendefinition<br>
+  AddToAndMultiplyBy(double factor, double summand, double originalValue)<br>
+  wurde der 1. mit dem 3. Parameter vertauscht:<br>
+  AddToAndMultiplyBy(double originalValue, double summand, double factor)<br>
+  <br>
+  Benutze Reguläre Ausdrücke, um das 1. mit dem 3. Argument jedes Aufrufs zu vertauschen.
+</p>
+<div class="playfield">
+  RegExp: <input type="text" value="^$" class="regex" reference="^[^aeiou]*([aeiou]+([^aeiou]+|$)){2}$">
+  Ersetzen mit: <input type="text" value="addToAndMultiplyBy()" class="replacewith">
+  <textarea class="originalsource" readonly>
+    AddToAndMultiplyBy(3, 2, 1);
+    AddToAndMultiplyBy(4, 2, 10);
+    AddToAndMultiplyBy(4, 2, originalValue: 10);
+    AddToAndMultiplyBy(factor: 2, summand: 3, originalValue: 10);
+  </textarea>
+  <textarea class="modifiedsource" readonly>
+  </textarea>
+  <textarea class="expectedsource" disabled>
+    AddToAndMultiplyBy(1, 3, 2); // 5
+    AddToAndMultiplyBy(10, 4, 2); // 42
+    AddToAndMultiplyBy(originalValue: 10, 4, 2); // 42
+    AddToAndMultiplyBy(originalValue: 2.5, factor: 8, summand: 3); // 23
+  </textarea>
+  <div class="message"></div>
+  <ul class="examples">
+    <li>AddToAndMultiplyBy(3, 2, 1);</li>
+    <li>AddToAndMultiplyBy(4, 2, 10);</li>
+    <li>AddToAndMultiplyBy(4, 2, originalValue: 10);</li>
+    <li>AddToAndMultiplyBy(factor: 2, summand: 3, originalValue: 10);</li>
+  </ul>
+</div>
+<p class="hint">
+  Benutze je eine Gruppe, um den Inhalt jedes Arguments zu erfassen und referenze im "Ersetzen"-Feld mit Gruppenreferenzen, z.B. <span class="regex">\1</span>, auf die gefundenen Gruppen. 
+</p>
